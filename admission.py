@@ -83,12 +83,13 @@ def choose(waiting, active, pool, policy, window, aging_ms, now):
     if not waiting:
         return None
     oldest = waiting[0]
-    if policy == "fcfs" or (policy == "guarded" and
-                            now - oldest.request.arrival_ms >= aging_ms):
+    if policy == "fcfs":
         return oldest if pool.extra(oldest) <= pool.available() else None
-    candidates = waiting[:window]
     available = pool.available()
     # Reserve the next decode step for active sequences near a page boundary.
     reserve = sum(s.length > len(s.pages) * pool.size for s in active) if policy == "guarded" else 0
+    candidates = waiting[:window]
+    if policy == "guarded" and now - oldest.request.arrival_ms >= aging_ms:
+        candidates = [oldest]
     feasible = [s for s in candidates if pool.extra(s) <= available - reserve]
     return max(feasible, key=lambda s: pool.prefix(s) in pool.prefixes, default=None)

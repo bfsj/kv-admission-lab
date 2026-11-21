@@ -17,6 +17,16 @@ class ReplayTests(unittest.TestCase):
         pool.release(y)
         pool.attach(z)
         self.assertEqual(pool.available(), 1)
+        old_page = pool.prefixes[pool.prefix(x)]
+        self.assertEqual(pool.take(), old_page)
+        self.assertNotIn(pool.prefix(x), pool.prefixes)
+
+    def test_aged_request_cannot_take_decode_reserve(self):
+        active, cold = [State(Request(i, 0, "cold", (i, i, 4, 4), 3)) for i in (1, 2)]
+        pool = Pool(4, 2)
+        pool.attach(active)
+        active.generated.append(42)
+        self.assertIsNone(choose([cold], [active], pool, "guarded", 8, 10, 100))
 
     def test_aging_promotes_cold_head(self):
         cold, hot = [State(Request(i, 0, c, (i, i, 4), 2)) for i, c in enumerate(["cold", "hot"])]
