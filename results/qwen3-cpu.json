@@ -1,0 +1,90 @@
+{
+  "backend": "real-model-service-clock",
+  "model": "Qwen3-0.6B",
+  "dtype": "float32",
+  "device": "cpu",
+  "threads": 4,
+  "torch": "2.11.0+cpu",
+  "transformers": "4.57.6",
+  "platform": "Windows AMD64",
+  "config": {
+    "pages": 12,
+    "page_size": 8,
+    "slots": 4,
+    "window": 8,
+    "aging_ms": 500,
+    "queue_timeout_ms": 120000,
+    "ttft_slo_ms": 2000,
+    "itl_slo_ms": 500
+  },
+  "seed": 17,
+  "trace_sha256": "e62e0c14c61a5886a7cea290c18ffc935c7d85ac07608757a53b3bcb64388087",
+  "arena_bytes": 22020096,
+  "reference_tokens": 101,
+  "reference_sha256": "6074b3d145a54b826f1bcb0151c4a3d431c66737a3cf48f12ddadc60d81147dc",
+  "runs": [
+    {
+      "policy": "fcfs",
+      "offered": 16,
+      "completed": 16,
+      "timeouts": 0,
+      "rejected": 0,
+      "slo_met": 2,
+      "goodput_req_s": 0.23592522594429502,
+      "elapsed_ms": 8477.262200322002,
+      "ttft_p95_ms": 6452.5161002529785,
+      "itl_p95_ms": 528.5179000347853,
+      "wait_p95_ms": {
+        "hot": 6340.832200250588,
+        "cold": 3067.489100038074
+      },
+      "prefix_hits_including_resumes": 8,
+      "preemptions": 1,
+      "recomputed_tokens": 6,
+      "peak_pinned_pages": 12,
+      "exact_sequences": 16
+    },
+    {
+      "policy": "cache",
+      "offered": 16,
+      "completed": 16,
+      "timeouts": 0,
+      "rejected": 0,
+      "slo_met": 4,
+      "goodput_req_s": 0.46365200137087365,
+      "elapsed_ms": 8627.1599996835,
+      "ttft_p95_ms": 6635.618599830195,
+      "itl_p95_ms": 589.6087000146508,
+      "wait_p95_ms": {
+        "hot": 6533.473599818535,
+        "cold": 5481.3696997007355
+      },
+      "prefix_hits_including_resumes": 10,
+      "preemptions": 2,
+      "recomputed_tokens": 26,
+      "peak_pinned_pages": 12,
+      "exact_sequences": 16
+    },
+    {
+      "policy": "guarded",
+      "offered": 16,
+      "completed": 16,
+      "timeouts": 0,
+      "rejected": 0,
+      "slo_met": 2,
+      "goodput_req_s": 0.22920868370448408,
+      "elapsed_ms": 8725.672900676727,
+      "ttft_p95_ms": 6517.977000912651,
+      "itl_p95_ms": 552.8874001465738,
+      "wait_p95_ms": {
+        "hot": 6392.186600947753,
+        "cold": 3352.743600611575
+      },
+      "prefix_hits_including_resumes": 8,
+      "preemptions": 1,
+      "recomputed_tokens": 5,
+      "peak_pinned_pages": 12,
+      "exact_sequences": 16
+    }
+  ]
+}

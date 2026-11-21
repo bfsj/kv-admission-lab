@@ -1,0 +1,346 @@
+{
+  "backend": "synthetic-cost",
+  "config": {
+    "pages": 12,
+    "page_size": 16,
+    "slots": 5,
+    "window": 8,
+    "aging_ms": 90,
+    "queue_timeout_ms": 800,
+    "ttft_slo_ms": 160,
+    "itl_slo_ms": 20
+  },
+  "offered_per_trace": 300,
+  "traces": [
+    {
+      "seed": 17,
+      "sha256": "ed32662eaef146c40a0d581c48017de3fcfc2477b6efc3c48dbaa64b7bec1f56",
+      "runs": [
+        {
+          "policy": "fcfs",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 70,
+          "goodput_req_s": 24.70277270978667,
+          "elapsed_ms": 2833.6900000001865,
+          "ttft_p95_ms": 738.5400000001387,
+          "itl_p95_ms": 7.160000000000082,
+          "wait_p95_ms": {
+            "hot": 739.5600000001391,
+            "cold": 729.1100000001379
+          },
+          "prefix_hits_including_resumes": 175,
+          "preemptions": 29,
+          "recomputed_tokens": 440,
+          "peak_pinned_pages": 12
+        },
+        {
+          "policy": "cache",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 80,
+          "goodput_req_s": 28.657298118288356,
+          "elapsed_ms": 2791.610000000176,
+          "ttft_p95_ms": 689.9100000001304,
+          "itl_p95_ms": 7.279999999999973,
+          "wait_p95_ms": {
+            "hot": 639.4700000001317,
+            "cold": 720.3300000001245
+          },
+          "prefix_hits_including_resumes": 186,
+          "preemptions": 27,
+          "recomputed_tokens": 449,
+          "peak_pinned_pages": 12
+        },
+        {
+          "policy": "guarded",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 67,
+          "goodput_req_s": 23.649423765904423,
+          "elapsed_ms": 2833.0500000001894,
+          "ttft_p95_ms": 740.0400000001418,
+          "itl_p95_ms": 7.280000000000882,
+          "wait_p95_ms": {
+            "hot": 741.0600000001423,
+            "cold": 730.6100000001411
+          },
+          "prefix_hits_including_resumes": 166,
+          "preemptions": 23,
+          "recomputed_tokens": 404,
+          "peak_pinned_pages": 12
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "sha256": "f67a803aa3673cff0e3c83ca7f0c29c2e1948e8aeca09688dec31204c0b82b51",
+      "runs": [
+        {
+          "policy": "fcfs",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 65,
+          "goodput_req_s": 23.15425005165029,
+          "elapsed_ms": 2807.2600000001817,
+          "ttft_p95_ms": 712.860000000132,
+          "itl_p95_ms": 7.030000000000655,
+          "wait_p95_ms": {
+            "hot": 711.3800000001502,
+            "cold": 708.9900000001321
+          },
+          "prefix_hits_including_resumes": 201,
+          "preemptions": 37,
+          "recomputed_tokens": 588,
+          "peak_pinned_pages": 12
+        },
+        {
+          "policy": "cache",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 65,
+          "goodput_req_s": 23.715184285222918,
+          "elapsed_ms": 2740.860000000165,
+          "ttft_p95_ms": 673.350000000124,
+          "itl_p95_ms": 7.030000000000655,
+          "wait_p95_ms": {
+            "hot": 623.4200000000465,
+            "cold": 718.3600000001388
+          },
+          "prefix_hits_including_resumes": 206,
+          "preemptions": 25,
+          "recomputed_tokens": 445,
+          "peak_pinned_pages": 12
+        },
+        {
+          "policy": "guarded",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 65,
+          "goodput_req_s": 23.37406413843052,
+          "elapsed_ms": 2780.8600000001757,
+          "ttft_p95_ms": 686.460000000126,
+          "itl_p95_ms": 7.0,
+          "wait_p95_ms": {
+            "hot": 684.9800000001442,
+            "cold": 682.5900000001261
+          },
+          "prefix_hits_including_resumes": 195,
+          "preemptions": 27,
+          "recomputed_tokens": 455,
+          "peak_pinned_pages": 12
+        }
+      ]
+    },
+    {
+      "seed": 19,
+      "sha256": "0307c23d7fc26d67b10870428e7b3a0dc1e04e894c13b61a36c13e4c76e34829",
+      "runs": [
+        {
+          "policy": "fcfs",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 55,
+          "goodput_req_s": 19.5079734407796,
+          "elapsed_ms": 2819.3600000001857,
+          "ttft_p95_ms": 742.3300000001746,
+          "itl_p95_ms": 6.899999999999864,
+          "wait_p95_ms": {
+            "hot": 739.5800000001746,
+            "cold": 738.0400000001619
+          },
+          "prefix_hits_including_resumes": 190,
+          "preemptions": 36,
+          "recomputed_tokens": 536,
+          "peak_pinned_pages": 12
+        },
+        {
+          "policy": "cache",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 53,
+          "goodput_req_s": 19.260960576810056,
+          "elapsed_ms": 2751.6800000001717,
+          "ttft_p95_ms": 675.3700000001577,
+          "itl_p95_ms": 6.839999999999918,
+          "wait_p95_ms": {
+            "hot": 659.9500000001453,
+            "cold": 702.7300000001283
+          },
+          "prefix_hits_including_resumes": 195,
+          "preemptions": 25,
+          "recomputed_tokens": 417,
+          "peak_pinned_pages": 12
+        },
+        {
+          "policy": "guarded",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 56,
+          "goodput_req_s": 20.093001894481752,
+          "elapsed_ms": 2787.040000000178,
+          "ttft_p95_ms": 714.8100000001664,
+          "itl_p95_ms": 6.839999999999918,
+          "wait_p95_ms": {
+            "hot": 712.0600000001664,
+            "cold": 710.5200000001537
+          },
+          "prefix_hits_including_resumes": 182,
+          "preemptions": 25,
+          "recomputed_tokens": 350,
+          "peak_pinned_pages": 12
+        }
+      ]
+    },
+    {
+      "seed": 20,
+      "sha256": "5be55c3ee8adf3d805c4bc3fd4ceaed115dcddff129fabaddccde8e24f4b906f",
+      "runs": [
+        {
+          "policy": "fcfs",
+          "offered": 300,
+          "completed": 298,
+          "timeouts": 2,
+          "rejected": 0,
+          "slo_met": 73,
+          "goodput_req_s": 25.782116393892576,
+          "elapsed_ms": 2831.4200000001815,
+          "ttft_p95_ms": 747.2100000001647,
+          "itl_p95_ms": 7.320000000000022,
+          "wait_p95_ms": {
+            "hot": 756.840000000168,
+            "cold": 731.2100000001042
+          },
+          "prefix_hits_including_resumes": 182,
+          "preemptions": 38,
+          "recomputed_tokens": 617,
+          "peak_pinned_pages": 12
+        },
+        {
+          "policy": "cache",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 80,
+          "goodput_req_s": 28.62653465062923,
+          "elapsed_ms": 2794.610000000176,
+          "ttft_p95_ms": 715.9800000001433,
+          "itl_p95_ms": 7.3799999999999955,
+          "wait_p95_ms": {
+            "hot": 701.9600000001415,
+            "cold": 734.0100000001353
+          },
+          "prefix_hits_including_resumes": 192,
+          "preemptions": 32,
+          "recomputed_tokens": 551,
+          "peak_pinned_pages": 12
+        },
+        {
+          "policy": "guarded",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 79,
+          "goodput_req_s": 28.13981570201537,
+          "elapsed_ms": 2807.410000000179,
+          "ttft_p95_ms": 724.6700000001488,
+          "itl_p95_ms": 7.219999999999914,
+          "wait_p95_ms": {
+            "hot": 728.680000000134,
+            "cold": 693.8400000000961
+          },
+          "prefix_hits_including_resumes": 177,
+          "preemptions": 25,
+          "recomputed_tokens": 423,
+          "peak_pinned_pages": 12
+        }
+      ]
+    },
+    {
+      "seed": 21,
+      "sha256": "da6f03d9bcdb0aae523419e2082f59d1cfd7cea87784eafaa7020d2e897914de",
+      "runs": [
+        {
+          "policy": "fcfs",
+          "offered": 300,
+          "completed": 295,
+          "timeouts": 5,
+          "rejected": 0,
+          "slo_met": 51,
+          "goodput_req_s": 17.936967386371723,
+          "elapsed_ms": 2843.2900000001755,
+          "ttft_p95_ms": 762.6900000001083,
+          "itl_p95_ms": 7.320000000000022,
+          "wait_p95_ms": {
+            "hot": 753.0200000001596,
+            "cold": 770.1700000001629
+          },
+          "prefix_hits_including_resumes": 152,
+          "preemptions": 34,
+          "recomputed_tokens": 562,
+          "peak_pinned_pages": 12
+        },
+        {
+          "policy": "cache",
+          "offered": 300,
+          "completed": 300,
+          "timeouts": 0,
+          "rejected": 0,
+          "slo_met": 57,
+          "goodput_req_s": 20.11859381617835,
+          "elapsed_ms": 2833.200000000174,
+          "ttft_p95_ms": 749.3700000000799,
+          "itl_p95_ms": 7.509999999999991,
+          "wait_p95_ms": {
+            "hot": 689.4400000001338,
+            "cold": 768.2800000001362
+          },
+          "prefix_hits_including_resumes": 178,
+          "preemptions": 36,
+          "recomputed_tokens": 669,
+          "peak_pinned_pages": 12
+        },
+        {
+          "policy": "guarded",
+          "offered": 300,
+          "completed": 297,
+          "timeouts": 3,
+          "rejected": 0,
+          "slo_met": 51,
+          "goodput_req_s": 17.917432256295452,
+          "elapsed_ms": 2846.3900000001777,
+          "ttft_p95_ms": 758.9200000001601,
+          "itl_p95_ms": 7.349999999999909,
+          "wait_p95_ms": {
+            "hot": 751.4500000001485,
+            "cold": 769.8500000001513
+          },
+          "prefix_hits_including_resumes": 152,
+          "preemptions": 30,
+          "recomputed_tokens": 501,
+          "peak_pinned_pages": 12
+        }
+      ]
+    }
+  ]
+}
