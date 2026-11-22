@@ -1,0 +1,16 @@
+name: Replay and result checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  cpu:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run dependency-free scheduler and archive tests
+        run: python -m unittest -v test_replay test_result_files
+      - name: Check every published request against the summary
+        run: python check_study.py results/capacity.json results/paced.json results/routing.json
