@@ -1,0 +1,542 @@
+{
+  "first": {
+    "concurrency": 4,
+    "requests": [
+      {
+        "id": 0,
+        "ttft_ms": 995.8836080040783,
+        "elapsed_ms": 1463.0350869847462,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 1,
+        "ttft_ms": 27.73939404869452,
+        "elapsed_ms": 349.26821204135194,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 2,
+        "ttft_ms": 1025.520151015371,
+        "elapsed_ms": 1461.838830029592,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 3,
+        "ttft_ms": 47.57901595439762,
+        "elapsed_ms": 348.44180598156527,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 4,
+        "ttft_ms": 25.565685995388776,
+        "elapsed_ms": 369.15878200670704,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 5,
+        "ttft_ms": 42.984976957086474,
+        "elapsed_ms": 363.84496698156,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 6,
+        "ttft_ms": 45.071026019286364,
+        "elapsed_ms": 368.58806997770444,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 7,
+        "ttft_ms": 42.42486099246889,
+        "elapsed_ms": 363.54472796665505,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 8,
+        "ttft_ms": 25.271082995459437,
+        "elapsed_ms": 339.95860401773825,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 9,
+        "ttft_ms": 25.6018890067935,
+        "elapsed_ms": 306.4200159860775,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 10,
+        "ttft_ms": 45.843130035791546,
+        "elapsed_ms": 339.64431803906336,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 11,
+        "ttft_ms": 25.3413770115003,
+        "elapsed_ms": 306.67565600015223,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 12,
+        "ttft_ms": 26.023169979453087,
+        "elapsed_ms": 341.0656069754623,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 13,
+        "ttft_ms": 26.760255976114422,
+        "elapsed_ms": 336.35638398118317,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 14,
+        "ttft_ms": 47.32230200897902,
+        "elapsed_ms": 340.7411889638752,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 15,
+        "ttft_ms": 48.67539199767634,
+        "elapsed_ms": 336.25780598958954,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 16,
+        "ttft_ms": 24.732121964916587,
+        "elapsed_ms": 338.451553019695,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 17,
+        "ttft_ms": 26.26153698656708,
+        "elapsed_ms": 311.9937079609372,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 18,
+        "ttft_ms": 45.05265597254038,
+        "elapsed_ms": 338.15682801650837,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 19,
+        "ttft_ms": 26.019548997282982,
+        "elapsed_ms": 311.89189897850156,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 20,
+        "ttft_ms": 25.520565977785736,
+        "elapsed_ms": 338.2080139708705,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 21,
+        "ttft_ms": 26.094744040165097,
+        "elapsed_ms": 306.41638400265947,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 22,
+        "ttft_ms": 45.820474973879755,
+        "elapsed_ms": 338.1667729699984,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 23,
+        "ttft_ms": 25.89115296723321,
+        "elapsed_ms": 306.67608900694177,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      }
+    ],
+    "ttft_p95_ms": 995.8836080040783,
+    "abort": {
+      "received": 1,
+      "ttft_ms": 23.45174504444003
+    },
+    "before": {
+      "active": 0,
+      "cancelled": 0,
+      "completed": 0,
+      "healthy": true,
+      "replicas": [
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        },
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        }
+      ]
+    },
+    "after_abort": {
+      "active": 0,
+      "cancelled": 1,
+      "completed": 25,
+      "healthy": true,
+      "replicas": [
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        },
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        }
+      ]
+    },
+    "followup": {
+      "id": 25,
+      "ttft_ms": 25.023042981047183,
+      "elapsed_ms": 295.97313702106476,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    "after": {
+      "active": 0,
+      "cancelled": 1,
+      "completed": 26,
+      "healthy": true,
+      "replicas": [
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        },
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        }
+      ]
+    }
+  },
+  "second": {
+    "concurrency": 4,
+    "requests": [
+      {
+        "id": 0,
+        "ttft_ms": 26.255408010911196,
+        "elapsed_ms": 343.07994303526357,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 1,
+        "ttft_ms": 44.130111986305565,
+        "elapsed_ms": 343.60867098439485,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 2,
+        "ttft_ms": 49.718683992978185,
+        "elapsed_ms": 342.58113999385387,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 3,
+        "ttft_ms": 43.28292398713529,
+        "elapsed_ms": 342.8953160182573,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 4,
+        "ttft_ms": 23.89255800517276,
+        "elapsed_ms": 339.91314499871805,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 5,
+        "ttft_ms": 26.043349993415177,
+        "elapsed_ms": 320.7411980256438,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 6,
+        "ttft_ms": 45.73529597837478,
+        "elapsed_ms": 339.61246896069497,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 7,
+        "ttft_ms": 25.817819987423718,
+        "elapsed_ms": 320.98751299781725,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 8,
+        "ttft_ms": 24.17494897963479,
+        "elapsed_ms": 330.1402750075795,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 9,
+        "ttft_ms": 26.189137948676944,
+        "elapsed_ms": 338.349413999822,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 10,
+        "ttft_ms": 44.25247403560206,
+        "elapsed_ms": 329.91298800334334,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 11,
+        "ttft_ms": 47.27878299308941,
+        "elapsed_ms": 338.5017029941082,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 12,
+        "ttft_ms": 24.11547099472955,
+        "elapsed_ms": 335.350829991512,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 13,
+        "ttft_ms": 26.864840008784086,
+        "elapsed_ms": 340.73909802827984,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 14,
+        "ttft_ms": 44.27071299869567,
+        "elapsed_ms": 335.12144797714427,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 15,
+        "ttft_ms": 48.88228204799816,
+        "elapsed_ms": 340.60744603630155,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 16,
+        "ttft_ms": 25.089668983127922,
+        "elapsed_ms": 338.9332859660499,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 17,
+        "ttft_ms": 26.16667398251593,
+        "elapsed_ms": 317.6411680178717,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 18,
+        "ttft_ms": 45.34351400798187,
+        "elapsed_ms": 338.67041603662074,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 19,
+        "ttft_ms": 25.88614000706002,
+        "elapsed_ms": 317.53418198786676,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 20,
+        "ttft_ms": 24.196880985982716,
+        "elapsed_ms": 333.27556296717376,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 21,
+        "ttft_ms": 25.321607012301683,
+        "elapsed_ms": 318.9355779904872,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 22,
+        "ttft_ms": 45.19271000754088,
+        "elapsed_ms": 332.96521101146936,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      },
+      {
+        "id": 23,
+        "ttft_ms": 25.077159982174635,
+        "elapsed_ms": 319.1897969809361,
+        "tokens": 16,
+        "reason": "length",
+        "text_matches": true
+      }
+    ],
+    "ttft_p95_ms": 48.88228204799816,
+    "abort": {
+      "received": 1,
+      "ttft_ms": 22.575923008844256
+    },
+    "before": {
+      "active": 0,
+      "cancelled": 1,
+      "completed": 26,
+      "healthy": true,
+      "replicas": [
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        },
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        }
+      ]
+    },
+    "after_abort": {
+      "active": 0,
+      "cancelled": 2,
+      "completed": 51,
+      "healthy": true,
+      "replicas": [
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        },
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        }
+      ]
+    },
+    "followup": {
+      "id": 25,
+      "ttft_ms": 24.131602025590837,
+      "elapsed_ms": 295.4758240375668,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    "after": {
+      "active": 0,
+      "cancelled": 2,
+      "completed": 52,
+      "healthy": true,
+      "replicas": [
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        },
+        {
+          "waiting": 0,
+          "running": 0,
+          "pinned": 0,
+          "free": 16
+        }
+      ]
+    }
+  }
+}

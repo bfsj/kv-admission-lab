@@ -1,0 +1,270 @@
+{
+  "concurrency": 4,
+  "requests": [
+    {
+      "id": 0,
+      "ttft_ms": 644.5119369891472,
+      "elapsed_ms": 1018.1466979556717,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 1,
+      "ttft_ms": 42.91547602042556,
+      "elapsed_ms": 330.6102250353433,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 2,
+      "ttft_ms": 664.4242799957283,
+      "elapsed_ms": 1016.8481179862283,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 3,
+      "ttft_ms": 41.79841699078679,
+      "elapsed_ms": 329.7676729853265,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 4,
+      "ttft_ms": 27.398734004236758,
+      "elapsed_ms": 345.6890410161577,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 5,
+      "ttft_ms": 28.240619983989745,
+      "elapsed_ms": 319.6235849754885,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 6,
+      "ttft_ms": 47.71426896331832,
+      "elapsed_ms": 345.1379289617762,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 7,
+      "ttft_ms": 27.770398010034114,
+      "elapsed_ms": 319.30703402031213,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 8,
+      "ttft_ms": 25.18209896516055,
+      "elapsed_ms": 345.6930569955148,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 9,
+      "ttft_ms": 30.855536984745413,
+      "elapsed_ms": 462.52498199464753,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 10,
+      "ttft_ms": 46.45679198438302,
+      "elapsed_ms": 345.3810520004481,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 11,
+      "ttft_ms": 30.59062297688797,
+      "elapsed_ms": 462.4110659933649,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 12,
+      "ttft_ms": 26.497687969822437,
+      "elapsed_ms": 351.41206497792155,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 13,
+      "ttft_ms": 36.57142695738003,
+      "elapsed_ms": 467.9492659633979,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 14,
+      "ttft_ms": 47.00600198702887,
+      "elapsed_ms": 351.11433296697214,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 15,
+      "ttft_ms": 36.331943003460765,
+      "elapsed_ms": 467.8538370062597,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 16,
+      "ttft_ms": 26.543645013589412,
+      "elapsed_ms": 352.5349000119604,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 17,
+      "ttft_ms": 36.97466303128749,
+      "elapsed_ms": 469.68456701142713,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 18,
+      "ttft_ms": 48.58448798768222,
+      "elapsed_ms": 352.6203479850665,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 19,
+      "ttft_ms": 36.656643031165004,
+      "elapsed_ms": 469.556141004432,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 20,
+      "ttft_ms": 25.918463012203574,
+      "elapsed_ms": 347.1872819936834,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 21,
+      "ttft_ms": 36.999734002165496,
+      "elapsed_ms": 499.5628809556365,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 22,
+      "ttft_ms": 48.080770997330546,
+      "elapsed_ms": 346.6916439938359,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    },
+    {
+      "id": 23,
+      "ttft_ms": 68.59672296559438,
+      "elapsed_ms": 499.4873959803954,
+      "tokens": 16,
+      "reason": "length",
+      "text_matches": true
+    }
+  ],
+  "ttft_p95_ms": 644.5119369891472,
+  "abort": {
+    "received": 1,
+    "ttft_ms": 24.907900020480156
+  },
+  "before": {
+    "active": 0,
+    "cancelled": 0,
+    "completed": 0,
+    "healthy": true,
+    "replicas": [
+      {
+        "waiting": 0,
+        "running": 0,
+        "pinned": 0,
+        "free": 16
+      },
+      {
+        "waiting": 0,
+        "running": 0,
+        "pinned": 0,
+        "free": 16
+      }
+    ]
+  },
+  "after_abort": {
+    "active": 0,
+    "cancelled": 1,
+    "completed": 25,
+    "healthy": true,
+    "replicas": [
+      {
+        "waiting": 0,
+        "running": 0,
+        "pinned": 0,
+        "free": 16
+      },
+      {
+        "waiting": 0,
+        "running": 0,
+        "pinned": 0,
+        "free": 16
+      }
+    ]
+  },
+  "followup": {
+    "id": 25,
+    "ttft_ms": 35.4446999845095,
+    "elapsed_ms": 429.6141809900291,
+    "tokens": 16,
+    "reason": "length",
+    "text_matches": true
+  },
+  "after": {
+    "active": 0,
+    "cancelled": 1,
+    "completed": 26,
+    "healthy": true,
+    "replicas": [
+      {
+        "waiting": 0,
+        "running": 0,
+        "pinned": 0,
+        "free": 16
+      },
+      {
+        "waiting": 0,
+        "running": 0,
+        "pinned": 0,
+        "free": 16
+      }
+    ]
+  }
+}

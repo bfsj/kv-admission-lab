@@ -2,7 +2,7 @@
 
 [RTX 4090 单卡与双副本实测](results/replicas.md) · [36 组原始数据](results/rtx4090-replicas.json)
 
-[容量边界与逐请求超时归因](results/capacity.md) · [长短中文请求的路由对照](results/routing.md)
+[容量边界与逐请求超时归因](results/capacity.md) · [长短中文请求的路由对照](results/routing.md) · [流式 API 与断开回收](serving.md)
 
 一个面向单个 LLM 推理 worker 的接纳调度实验。多条请求可以复用同一段提示词的 KV，但命中缓存的请求插队也会增加冷请求的等待时间。这个实验固定到达流量、生成长度和 KV 页数，比较三种排队规则。
 
