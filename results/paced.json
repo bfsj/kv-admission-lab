@@ -1,0 +1,477 @@
+{
+  "model": "Qwen3-0.6B",
+  "workers": [
+    [
+      {
+        "device": 0,
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "torch": "2.11.0+cu128",
+        "dtype": "torch.bfloat16",
+        "kv_bytes": 469762048
+      }
+    ]
+  ],
+  "count": 300,
+  "seed": 17,
+  "arrival": "paced",
+  "ttft_limit_ms": 250,
+  "max_gap_limit_ms": 100,
+  "cases": [
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 25218.252310005482,
+      "completed": 300,
+      "req_s": 11.896145550140814,
+      "slo_met": 300,
+      "goodput_req_s": 11.896145550140814,
+      "ttft_p95_ms": 40.77132234427518,
+      "itl_p95_ms": 42.5819989759475,
+      "first_admission_hits": 176,
+      "cold_wait_p95_ms": 18.642188981175423,
+      "slo_breakdown": {
+        "met": 300,
+        "ttft_only": 0,
+        "gap_only": 0,
+        "both": 0
+      },
+      "peak_batch": 6,
+      "preemptions": 0,
+      "recomputed_tokens": 0,
+      "other_gpu_processes_before_after": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "trial": 1,
+      "rate": 12,
+      "pages": 16,
+      "trace_sha256": "51d9e41308032eeb8e6e291d90e6ba41d0bf28576a03157f09cff06d7a226340"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 16925.25268899044,
+      "completed": 300,
+      "req_s": 17.724993860513784,
+      "slo_met": 298,
+      "goodput_req_s": 17.60682723477703,
+      "ttft_p95_ms": 93.75822837076521,
+      "itl_p95_ms": 43.64851099671796,
+      "first_admission_hits": 176,
+      "cold_wait_p95_ms": 72.73209124105051,
+      "slo_breakdown": {
+        "met": 298,
+        "ttft_only": 0,
+        "gap_only": 2,
+        "both": 0
+      },
+      "peak_batch": 9,
+      "preemptions": 48,
+      "recomputed_tokens": 12559,
+      "other_gpu_processes_before_after": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "trial": 1,
+      "rate": 18,
+      "pages": 16,
+      "trace_sha256": "410342861115cbf2f5249123be6c01f7efe1874834fb0d01a1fde25c5d91e327"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 13624.289377010427,
+      "completed": 300,
+      "req_s": 22.019497068685197,
+      "slo_met": 66,
+      "goodput_req_s": 4.844289355110743,
+      "ttft_p95_ms": 903.5542740020901,
+      "itl_p95_ms": 47.9470569989644,
+      "first_admission_hits": 173,
+      "cold_wait_p95_ms": 895.4669556696899,
+      "slo_breakdown": {
+        "met": 66,
+        "ttft_only": 208,
+        "gap_only": 9,
+        "both": 17
+      },
+      "peak_batch": 12,
+      "preemptions": 167,
+      "recomputed_tokens": 44689,
+      "other_gpu_processes_before_after": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "trial": 1,
+      "rate": 24,
+      "pages": 16,
+      "trace_sha256": "097499f0224ef07c9db0e8215c2e9b5e522a881869f1467fe41bed9b6b831f78"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 13812.119909038302,
+      "completed": 300,
+      "req_s": 21.720054703817596,
+      "slo_met": 11,
+      "goodput_req_s": 0.7964020058066451,
+      "ttft_p95_ms": 5000.526642019395,
+      "itl_p95_ms": 49.63709303410724,
+      "first_admission_hits": 171,
+      "cold_wait_p95_ms": 4978.576123015955,
+      "slo_breakdown": {
+        "met": 11,
+        "ttft_only": 262,
+        "gap_only": 3,
+        "both": 24
+      },
+      "peak_batch": 11,
+      "preemptions": 166,
+      "recomputed_tokens": 42747,
+      "other_gpu_processes_before_after": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "trial": 1,
+      "rate": 36,
+      "pages": 16,
+      "trace_sha256": "9a38d4755251590c827915c08f44a0cd11e6f0a7188fb62f1f1beea5776a7365"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 13753.244741994422,
+      "completed": 300,
+      "req_s": 21.813034351375588,
+      "slo_met": 11,
+      "goodput_req_s": 0.7998112595504382,
+      "ttft_p95_ms": 4939.276793971658,
+      "itl_p95_ms": 49.14111003745347,
+      "first_admission_hits": 171,
+      "cold_wait_p95_ms": 4916.804893000517,
+      "slo_breakdown": {
+        "met": 11,
+        "ttft_only": 262,
+        "gap_only": 3,
+        "both": 24
+      },
+      "peak_batch": 11,
+      "preemptions": 166,
+      "recomputed_tokens": 42747,
+      "other_gpu_processes_before_after": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "trial": 2,
+      "rate": 36,
+      "pages": 16,
+      "trace_sha256": "9a38d4755251590c827915c08f44a0cd11e6f0a7188fb62f1f1beea5776a7365"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 12985.106312960852,
+      "completed": 300,
+      "req_s": 23.103391899114477,
+      "slo_met": 132,
+      "goodput_req_s": 10.16549243561037,
+      "ttft_p95_ms": 431.2036960036494,
+      "itl_p95_ms": 42.98852599458769,
+      "first_admission_hits": 177,
+      "cold_wait_p95_ms": 437.0838410104625,
+      "slo_breakdown": {
+        "met": 132,
+        "ttft_only": 150,
+        "gap_only": 15,
+        "both": 3
+      },
+      "peak_batch": 12,
+      "preemptions": 165,
+      "recomputed_tokens": 42436,
+      "other_gpu_processes_before_after": [
+        [
+          1
+        ],
+        [
+          0
+        ]
+      ],
+      "trial": 2,
+      "rate": 24,
+      "pages": 16,
+      "trace_sha256": "097499f0224ef07c9db0e8215c2e9b5e522a881869f1467fe41bed9b6b831f78"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 16894.136151997373,
+      "completed": 300,
+      "req_s": 17.757640716334073,
+      "slo_met": 300,
+      "goodput_req_s": 17.757640716334073,
+      "ttft_p95_ms": 46.22445390689063,
+      "itl_p95_ms": 39.9562920210883,
+      "first_admission_hits": 178,
+      "cold_wait_p95_ms": 32.797146879602224,
+      "slo_breakdown": {
+        "met": 300,
+        "ttft_only": 0,
+        "gap_only": 0,
+        "both": 0
+      },
+      "peak_batch": 8,
+      "preemptions": 21,
+      "recomputed_tokens": 4765,
+      "other_gpu_processes_before_after": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "trial": 2,
+      "rate": 18,
+      "pages": 16,
+      "trace_sha256": "410342861115cbf2f5249123be6c01f7efe1874834fb0d01a1fde25c5d91e327"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 25211.30829898175,
+      "completed": 300,
+      "req_s": 11.899422133999948,
+      "slo_met": 300,
+      "goodput_req_s": 11.899422133999948,
+      "ttft_p95_ms": 38.75965200131759,
+      "itl_p95_ms": 39.81174901127815,
+      "first_admission_hits": 175,
+      "cold_wait_p95_ms": 17.67941366415471,
+      "slo_breakdown": {
+        "met": 300,
+        "ttft_only": 0,
+        "gap_only": 0,
+        "both": 0
+      },
+      "peak_batch": 5,
+      "preemptions": 0,
+      "recomputed_tokens": 0,
+      "other_gpu_processes_before_after": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "trial": 2,
+      "rate": 12,
+      "pages": 16,
+      "trace_sha256": "51d9e41308032eeb8e6e291d90e6ba41d0bf28576a03157f09cff06d7a226340"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 25228.696967998985,
+      "completed": 300,
+      "req_s": 11.891220556516696,
+      "slo_met": 300,
+      "goodput_req_s": 11.891220556516696,
+      "ttft_p95_ms": 40.04001568925378,
+      "itl_p95_ms": 42.497101007029414,
+      "first_admission_hits": 176,
+      "cold_wait_p95_ms": 18.99287535343319,
+      "slo_breakdown": {
+        "met": 300,
+        "ttft_only": 0,
+        "gap_only": 0,
+        "both": 0
+      },
+      "peak_batch": 6,
+      "preemptions": 0,
+      "recomputed_tokens": 0,
+      "other_gpu_processes_before_after": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "trial": 3,
+      "rate": 12,
+      "pages": 16,
+      "trace_sha256": "51d9e41308032eeb8e6e291d90e6ba41d0bf28576a03157f09cff06d7a226340"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 16920.41662405245,
+      "completed": 300,
+      "req_s": 17.730059883605268,
+      "slo_met": 297,
+      "goodput_req_s": 17.552759284769213,
+      "ttft_p95_ms": 97.28355110726443,
+      "itl_p95_ms": 46.11063504125923,
+      "first_admission_hits": 179,
+      "cold_wait_p95_ms": 86.25914325239137,
+      "slo_breakdown": {
+        "met": 297,
+        "ttft_only": 0,
+        "gap_only": 3,
+        "both": 0
+      },
+      "peak_batch": 8,
+      "preemptions": 52,
+      "recomputed_tokens": 14069,
+      "other_gpu_processes_before_after": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "trial": 3,
+      "rate": 18,
+      "pages": 16,
+      "trace_sha256": "410342861115cbf2f5249123be6c01f7efe1874834fb0d01a1fde25c5d91e327"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 14506.035641010385,
+      "completed": 300,
+      "req_s": 20.681046663904667,
+      "slo_met": 45,
+      "goodput_req_s": 3.1021569995857,
+      "ttft_p95_ms": 1431.444344304813,
+      "itl_p95_ms": 56.66689295321703,
+      "first_admission_hits": 171,
+      "cold_wait_p95_ms": 1399.422150279861,
+      "slo_breakdown": {
+        "met": 45,
+        "ttft_only": 229,
+        "gap_only": 4,
+        "both": 22
+      },
+      "peak_batch": 11,
+      "preemptions": 158,
+      "recomputed_tokens": 41268,
+      "other_gpu_processes_before_after": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "trial": 3,
+      "rate": 24,
+      "pages": 16,
+      "trace_sha256": "097499f0224ef07c9db0e8215c2e9b5e522a881869f1467fe41bed9b6b831f78"
+    },
+    {
+      "replicas": 1,
+      "admission": "stock",
+      "router": "rr",
+      "per_replica": [
+        300
+      ],
+      "elapsed_ms": 14253.689503995702,
+      "completed": 300,
+      "req_s": 21.04718219910022,
+      "slo_met": 2,
+      "goodput_req_s": 0.14031454799400148,
+      "ttft_p95_ms": 5433.871874003671,
+      "itl_p95_ms": 62.1760810026899,
+      "first_admission_hits": 172,
+      "cold_wait_p95_ms": 5411.192819010466,
+      "slo_breakdown": {
+        "met": 2,
+        "ttft_only": 261,
+        "gap_only": 8,
+        "both": 29
+      },
+      "peak_batch": 11,
+      "preemptions": 165,
+      "recomputed_tokens": 43546,
+      "other_gpu_processes_before_after": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "trial": 3,
+      "rate": 36,
+      "pages": 16,
+      "trace_sha256": "9a38d4755251590c827915c08f44a0cd11e6f0a7188fb62f1f1beea5776a7365"
+    }
+  ]
+}
