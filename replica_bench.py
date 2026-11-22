@@ -5,6 +5,7 @@ import hashlib
 import json
 import multiprocessing as mp
 import random
+from contextlib import contextmanager
 from itertools import islice
 from multiprocessing.connection import wait
 from pathlib import Path
@@ -89,6 +90,31 @@ def destination(mode, rid, loads, cached):
     return least
 
 
+def route_request(mode, rid, loads, schedulers, prefix, key, length):
+    if mode in ("rr", "least"):
+        return destination(mode, rid, loads, ())
+    cached = []
+    for scheduler in schedulers:
+        bm = scheduler.block_manager
+        page = bm.hash_to_block_id.get(key) if len(prefix) == PAGE else None
+        cached.append(page is not None and bm.blocks[page].token_ids == prefix)
+    if mode == "affinity":
+        return destination(mode, rid, loads, cached)
+    if mode != "work":
+        raise ValueError(f"unknown router {mode}")
+    # Fixed heuristic in equivalent input tokens. Only current state and declared
+    # output caps are visible; the actual stopping position is unknown.
+    scores = []
+    for scheduler, hit in zip(schedulers, cached):
+        work = length - PAGE * hit
+        for seq in (*scheduler.waiting, *scheduler.running):
+            prefill = max(0, len(seq) - seq.num_cached_tokens)
+            decode = min(24, max(0, seq.max_tokens - seq.num_completion_tokens))
+            work += prefill + 16 * decode
+        scores.append(work)
+    return min(range(len(scores)), key=lambda i: (scores[i], loads[i], (i-rid) % len(scores)))
+
+
 def receive(conn, expected):
     kind, data = conn.recv()
     if kind != expected:
@@ -96,7 +122,13 @@ def receive(conn, expected):
     return data
 
 
-def replay(trace, conns, config, policy, routing, ttft_limit, gap_limit):
+def verdict(first_ms, max_gap_ms, first_limit, gap_limit):
+    if first_ms > first_limit:
+        return "both" if max_gap_ms > gap_limit else "ttft_only"
+    return "gap_only" if max_gap_ms > gap_limit else "met"
+
+
+def replay(trace, conns, config, policy, routing, ttft_limit, gap_limit, rows=None):
     schedulers = [MeasuredScheduler(config, policy == "guarded") for _ in conns]
     loads = [0] * len(conns)
     totals = loads.copy()
@@ -112,12 +144,8 @@ def replay(trace, conns, config, policy, routing, ttft_limit, gap_limit):
             raise TimeoutError("replay exceeded five minutes")
         while cursor < len(trace) and trace[cursor].arrival_ms <= (now-start)*1000:
             r = trace[cursor]
-            cached = []
-            for scheduler in schedulers:
-                bm = scheduler.block_manager
-                page = bm.hash_to_block_id.get(key_hash[cursor])
-                cached.append(page is not None and bm.blocks[page].token_ids == list(r.prompt[:PAGE]))
-            idx = destination(routing, r.id, loads, cached)
+            idx = route_request(routing, r.id, loads, schedulers, list(r.prompt[:PAGE]),
+                                key_hash[cursor], len(r.prompt))
             seq = Sequence(list(r.prompt), SamplingParams(max_tokens=r.output_tokens, ignore_eos=True))
             seq.rid = r.id
             seq.arrival = start + r.arrival_ms / 1000
@@ -162,7 +190,16 @@ def replay(trace, conns, config, policy, routing, ttft_limit, gap_limit):
     elapsed = max(t[-1] for t in events.values())
     first = [events[r.id][0]-r.arrival_ms for r in trace]
     gaps = [[b-a for a,b in zip(times,times[1:])] for times in (events[r.id] for r in trace)]
-    passed = sum(t <= ttft_limit and max(g, default=0) <= gap_limit for t,g in zip(first,gaps))
+    categories = dict.fromkeys(("met", "ttft_only", "gap_only", "both"), 0)
+    for r, ttft, intervals in zip(trace, first, gaps):
+        gap = max(intervals, default=0)
+        outcome = verdict(ttft, gap, ttft_limit, gap_limit)
+        categories[outcome] += 1
+        if rows is not None:
+            rows.append(dict(id=r.id, cohort=r.cohort, arrival_ms=r.arrival_ms,
+                             input_tokens=len(r.prompt), generated=len(outputs[r.id][0]),
+                             wait_ms=outputs[r.id][1], ttft_ms=ttft, max_gap_ms=gap, slo=outcome))
+    passed = categories["met"]
     tokens = [outputs[r.id][0] for r in trace]
     if any(len(t) != r.output_tokens for t,r in zip(tokens,trace)):
         raise AssertionError("incomplete generation")
@@ -171,9 +208,42 @@ def replay(trace, conns, config, policy, routing, ttft_limit, gap_limit):
                  slo_met=passed, goodput_req_s=passed*1000/elapsed, ttft_p95_ms=p95(first),
                  itl_p95_ms=p95([v for g in gaps for v in g]), first_admission_hits=hits,
                  cold_wait_p95_ms=p95([outputs[r.id][1] for r in trace if r.cohort == "cold"]),
-                 peak_batch=peak_batch, preemptions=sum(s.preemptions for s in schedulers),
+                 slo_breakdown=categories, peak_batch=peak_batch, preemptions=sum(s.preemptions for s in schedulers),
                  recomputed_tokens=recomputed)
     return stats, tokens
+
+
+@contextmanager
+def replicas(devices, model, pages):
+    ctx = mp.get_context("spawn")
+    conns, processes = [], []
+    metadata = []
+    try:
+        for device in devices:
+            client, child = ctx.Pipe()
+            proc = ctx.Process(target=worker, args=(child, device, model, pages))
+            proc.start()
+            child.close()
+            client.gpu_index, client.worker_pid = device, proc.pid
+            conns.append(client)
+            processes.append(proc)
+        for conn in conns:
+            if not conn.poll(300):
+                raise TimeoutError("worker initialization timed out")
+            metadata.append(receive(conn, "ready"))
+        yield conns, metadata
+    finally:
+        for conn in conns:
+            try:
+                conn.send(None)
+            except (BrokenPipeError, OSError):
+                pass
+            conn.close()
+        for proc in processes:
+            proc.join(10)
+            if proc.is_alive():
+                proc.terminate()
+                proc.join()
 
 
 def main():
@@ -192,23 +262,11 @@ def main():
         p.error("provide distinct GPUs, at least 3 pages and positive run dimensions")
     config = Config(args.model, max_num_batched_tokens=4096, max_model_len=1024,
                     max_num_seqs=16, num_kvcache_blocks=args.pages)
-    ctx = mp.get_context("spawn")
-    conns, processes = [], []
     report = dict(model=Path(args.model).name, pages_per_gpu=args.pages, page_size=PAGE,
                   seed=args.seed, burst=8, interval_ms=args.interval_ms, ttft_slo_ms=250,
                   max_itl_slo_ms=100, workers=[], cases=[])
-    try:
-        for device in args.devices:
-            client, child = ctx.Pipe()
-            proc = ctx.Process(target=worker, args=(child, device, args.model, args.pages))
-            proc.start()
-            child.close()
-            conns.append(client)
-            processes.append(proc)
-        for conn in conns:
-            if not conn.poll(300):
-                raise TimeoutError("worker initialization timed out")
-            report["workers"].append(receive(conn, "ready"))
+    with replicas(args.devices, args.model, args.pages) as (conns, metadata):
+        report["workers"] = metadata
         for conn in conns:
             replay(traffic(32, 91, True, 1), [conn], config, "guarded", "rr", 250, 100)
         layouts = [(1, "stock", "rr"), (1, "guarded", "rr")]
@@ -232,18 +290,6 @@ def main():
                     print(stats["profile"], rep+1, n, policy, router, round(stats["req_s"],1),
                           stats["slo_met"], flush=True)
         args.output.write_text(json.dumps(report, indent=2)+"\n", encoding="utf8")
-    finally:
-        for conn in conns:
-            try:
-                conn.send(None)
-            except (BrokenPipeError, OSError):
-                pass
-            conn.close()
-        for proc in processes:
-            proc.join(10)
-            if proc.is_alive():
-                proc.terminate()
-                proc.join()
 
 
 if __name__ == "__main__":
