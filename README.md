@@ -47,3 +47,20 @@ python model_replay.py --model /path/to/Qwen3-0.6B
 这条命令先用完整上下文逐步前向，生成参考 token，然后对三种策略逐请求核对整个输出。模型后端将各层真实 K/V 写入固定的页池，复用命中的前缀页，抢占后用已生成的 token 恢复上下文。HF attention 所需的连续历史由页池临时拼装，页池大小只统计持久 K/V，共享首段限一页。
 
 本次 CPU 校验使用 16 个请求、共 101 个输出 token，页池 12 页，每页 8 个 token，持久 K/V 共 21 MiB。模型调用串行执行，回放时钟累计真实前向和 KV 搬运耗时，并按指定到达时间插入空闲期。该实验校验输出正确性；GPU continuous batching 和 HTTP 端到端性能需要单独测量。模型入口也接受 `--device cuda`。[CPU 实测记录](results/qwen3-cpu.json)
+
+## 单卡与多副本 GPU 推理
+
+同一个调度进程接收预分词请求，每张 GPU 上有一个独立的 Qwen3 模型和固定大小的 KV 页池。请求从接纳到完成一直留在初次分配的卡上。各卡独立做 continuous batching，经进程间管道异步返回生成结果。单卡和多卡复用同一套 nano-vLLM 模型、FlashAttention 和分页 KV 执行路径。
+
+单卡比较上游调度器（stock）和带保护的接纳策略（guarded）。guarded 在长等待队首出现前，从前八个候选中优先选可接纳且命中块最多的请求，并在分配时给将要跨页的运行中序列留出 KV 块。双卡增加三种路由：轮询、最少未完成请求、缓存亲和。亲和路由只考虑已有首个完整前缀页、且未完成请求数至多比最空闲卡多一条的副本。所有策略共用相同的自然淘汰和抢占机制。
+
+Linux CUDA 环境需安装与 PyTorch 匹配的 FlashAttention 2，并使用固定的 nano-vLLM 版本。在已有模型和所需依赖的环境中运行：
+
+```sh
+git clone https://github.com/GeeeekExplorer/nano-vllm.git ../nano-vllm-pinned
+git -C ../nano-vllm-pinned checkout bb823b3e06983d71485a8e1f23715ebd87d98ef8
+export PYTHONPATH="$PWD/../nano-vllm-pinned"
+python replica_bench.py --model /path/to/Qwen3-0.6B --devices 0 1 --count 300 --repeats 3 --interval-ms 220 --output replicas.json
+```
+
+`--devices 0` 只运行单卡对照。每卡各有 16 个 256-token 的物理 KV 块，双卡总缓存随副本数翻倍。每个场景启动前清空调度和缓存元数据，保留已预热的模型。硬件时钟从计划到达计到控制进程收到 token，包括排队、调度、管道传输和模型执行。流量采用成批到达的合成 token，生成固定长度并忽略 EOS。两类流量共用长度和到达时间；mixed 中约 70% 的请求从三个热前缀中选择，unique 中每个请求的首块均不同。正式对比统计 250 ms 首 token 和每个后续间隔 100 ms 双重上限下的达标吞吐。
